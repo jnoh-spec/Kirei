@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Admin Menu'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/adminMenu.css}"/>
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu" th:if="${session.userInfo != null}">
+					<ul>
+						<li class="name"><span th:text="'ようこそ、' + ${session.nickname} + 'さん'"></span></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'管理者メニュー'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="adminMenu">
+			<ul>
+				<li><a th:href="@{/kirei/csvInsert}" th:text="'レビュー登録(CSV)'"></a></li>
+				<li><a th:href="@{/kirei/userList}" th:text="'ユーザー一覧'"></a></li>
+				<li><a th:href="@{/kirei/allReviewList}" th:text="'レビュー一覧'"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

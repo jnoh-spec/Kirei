@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Error'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/error.css}">
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="boxB">
+		<h3 th:text="'エラー'"></h3>
+		<div class="boxB-inner">
+			<p th:text="${status}"></p>
+			<p th:text="${timestamp}"></p>
+		</div>
+		<br>
+		<a th:href="@{/kirei}" th:text="'ログインに戻る'"></a>
+		<br>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

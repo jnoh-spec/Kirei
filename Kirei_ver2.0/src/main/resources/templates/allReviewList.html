@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'All Review List'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/allReviewList.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/adminMenu}" th:text="'メニュー'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'レビューー一覧'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="search">
+			<form class="inline-block" th:action="@{/kirei/adminKeywordSearch}" method="post">
+				<label id="name" th:text="''">キーワード</label>
+				<input type="text" size="55" name="keyword">
+				<input type="submit" value="検索">
+			</form>
+			<form class="inline-block" th:action="@{/kirei/allReviewList}">
+				<input type="submit" value="全件表示">
+			</form>
+		</div>
+		<div class="download">
+			<a th:href="@{/kirei/csvDownload}" th:text="'ファイルダウンロード(click!)'"></a>
+		</div>
+		<div class="table">
+			<table id="show_tb">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th th:text="'商品名'"></th>
+						<th th:text="'価格'"></th>
+						<th th:text="'作成日'"></th>
+					</tr>
+				</thead>
+				<tbody th:if="${reviewList != null && imageList != null}">
+					<tr th:each="review : ${reviewList}">
+					<th:block th:each="image : ${imageList}">
+					<th:block th:if="${review.review_No == image.review_No}">
+						<td></td>
+						<td><a th:href="@{/kirei/reviewDetail(review_No=${review.review_No})}">
+							<img th:src="@{${'/resources/uploadImage/' + image.image}}" width="70px" height="70px">
+						</a></td>
+						<td th:text="${review.product_Name}"></td>
+						<td th:text="${review.product_Price}"></td>
+						<td th:text="${review.insert_Date}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

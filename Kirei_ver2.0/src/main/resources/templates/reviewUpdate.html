@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Review Update'"></title>
+<link rel="stylesheet"  th:href="@{/resources/css/reviewUpdate.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function readURL(input){
+		 if(input.files && input.files[0]){
+		   var reader = new FileReader();
+		   reader.onload = function(e){
+		    $('#preview').html("<img id=img src='' style='height: 220px; width: 220px;'>");
+		    $('#img').attr('src', e.target.result);
+		   }
+		   reader.readAsDataURL(input.files[0]);
+		 }
+	}
+
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/top}" th:text="'トップ'"></a></li>
+						<li><a th:href="@{/kirei/mypage}" th:text="'マイページ'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'レビュー編集'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="insert">
+			<div class="image" id="preview">
+				<img th:src="@{/resources/img/no_image.png}" width="240px" height="240px">
+			</div>
+			<div class="form" th:if="${review != null}">
+				<form th:action="@{/kirei/updateReview}" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="review_No" th:value="${review.review_No}">
+					<table id="insert_tb">
+						<tr>
+							<td th:text="'商品名'"></td>
+							<td><input type="text" size="37" name="product_Name" th:value="${review.product_Name}"></td>
+						</tr>
+						<tr>
+							<td th:text="'価格'"></td>
+							<td><input type="text" size="37" name="product_Price" th:value="${review.product_Price}"></td>
+						</tr>
+						<tr>
+							<td th:text="'レビュー'"></td>
+							<td><textarea cols="40" rows="8" name="review" th:text="${review.review}"></textarea></td>
+						</tr>
+						<tr>
+							<td th:text="'写真アップロード(preview)'"></td>
+							<td><input type="file" name="file" onchange="readURL(this)"><td>
+						</tr>
+					</table>
+					<input type="submit" value="レビュー編集">
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

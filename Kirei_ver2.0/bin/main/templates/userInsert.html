@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'User Insert'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/userInsert.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function validate() {
+
+		var id = document.getElementById("user_Id");
+		var pwd = document.getElementById("user_Pwd");
+		var nick = document.getElementById("nickname");
+
+		if (id.value == "") {
+			alert("ユーザーIDを入力してください！");
+			return false;
+		}
+
+		if (pwd.value == "") {
+			alert("パスワードを入力してください！");
+			return false;
+		}
+
+		if (nick.value == "") {
+			alert("ニックネームを入力してください！");
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/top}" th:text="'トップ'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'ユーザー新規登録'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="userInsert">
+			<form th:action="@{/kirei/userInsert}" method="post" onsubmit="return validate();">
+				<table id="insert_tb">
+					<tr>
+						<td id="main_td" th:text="'ユーザーID'"></td>
+						<td><input type="text" size="30" id="user_Id" name="user_Id"></td>
+					</tr>
+					<tr>
+						<td id="main_td" th:text="'パスワード'"></td>
+						<td><input type="password" size="30" id="user_Pwd" name="user_Pwd"></td>
+					</tr>
+					<tr>
+						<td id="main_td" th:text="'ニックネーム'"></td>
+						<td><input type="text" size="30" id="nickname" name="nickname"></td>
+					</tr>
+				</table>
+				<input type="submit" value="登録">
+			</form>
+			<a th:href="@{/kirei/login}" th:text="'ログイン画面へ'"></a>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project.kirei.mapper.CommonMapper">
+
+    <select id="login" resultType="project.kirei.dto.User" parameterType="project.kirei.dto.Login">
+        	select *
+        	from user
+        	where user_id = #{user_Id} and user_pwd = #{user_Pwd}
+    </select>
+
+    <select id="selectAllReview" resultType="project.kirei.dto.Review">
+			select *
+			from review
+			order by review_no desc
+    </select>
+
+    <!-- <select id="selectOneImage" resultType="project.kirei.dto.Image" parameterType="int">
+    		select min(image_no) as image_no, image, review_no
+    		from image where review_no = #{review_No}
+    		group by review_no
+    </select> -->
+    
+    <select id="selectImage" resultType="project.kirei.dto.Image" parameterType="int">
+    		select *
+    		from image 
+    		where review_no = #{review_No}
+    </select>
+
+    <select id="detailReview" resultType="project.kirei.dto.Review" parameterType="int">
+    		select *
+    		from review
+    		where review_no = #{review_No}
+    </select>
+
+    <select id="userReview" resultType="project.kirei.dto.User" parameterType="int">
+    		select *
+    		from user
+    		where user_no = #{user_No}
+    </select>
+
+    <select id="detailImage" resultType="project.kirei.dto.Image" parameterType="int">
+    		select *
+    		from image
+    		where review_no = #{review_No}
+    </select>
+
+</mapper>

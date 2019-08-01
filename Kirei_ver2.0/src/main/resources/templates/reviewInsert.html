@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Review Insert'"></title>
+<link rel="stylesheet"  th:href="@{/resources/css/reviewInsert.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function readURL(input) {
+		 if (input.files && input.files[0]){
+		   var reader = new FileReader();
+		   reader.onload = function(e){
+		    $('#preview').html("<img id=img src='' style='height: 240px; width: 240px;'>");
+		    $('#img').attr('src', e.target.result);
+		   }
+		   reader.readAsDataURL(input.files[0]);
+		 }
+	}
+
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+
+	function inconfirm() {
+		var name = document.getElementById("product_Name");
+		var price = document.getElementById("product_Price");
+		var review = document.getElementById("review");
+		var message = confirm("登録しますか？");
+		console.log("name : " + name.value);
+
+		 if (name.value == "") {
+			alert("商品名を入力してください！");
+			return false;
+		 }
+
+		 if (price.value == "") {
+			alert("価格を入力してください！");
+			return false;
+			 }
+
+		 if (review.value == "") {
+			alert("レビューを入力してください！");
+			return false;
+			 }
+
+		 if (message == true) {
+			 alert("登録しました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/top}" th:text="'トップ'"></a></li>
+						<li><a th:href="@{/kirei/mypage}" th:text="'マイページ'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'レビュー登録'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="insert">
+			<div class="image" id="preview">
+				<img th:src="@{/resources/img/no_image.png}" width="240px" height="240px">
+			</div>
+			<div class="form">
+				<form th:action="@{/kirei/reviewInsert}" method="post" enctype="multipart/form-data">
+					<table id="insert_tb">
+						<tr>
+							<td th:text="'商品名'"></td>
+							<td><input type="text" size="37" name="product_Name" id="product_Name"></td>
+						</tr>
+						<tr>
+							<td th:text="'価格'"></td>
+							<td><input type="text" size="37" name="product_Price" id="product_Price"></td>
+						</tr>
+						<tr>
+							<td  th:text="'レビュー'"></td>
+							<td><textarea cols="40" rows="8" name="review" id="review"></textarea></td>
+						</tr>
+						<tr>
+							<td th:text="'写真アップロード(preview)'"></td>
+							<td><input type="file" name="file" onchange="readURL(this)"><td>
+						</tr>
+					</table>
+					<p th:text="'*写真はアップロードしなくてもいい'"></p>
+					<input type="submit" value="レビュー登録" onclick="return inconfirm()">
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "spring.devtools.restart.exlude",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.exlude'"
+  },
+  {
+    "name": "spring.devtools.restart.exlude",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.exlude'"
+  },
+  {
+    "name": "spring.devtools.restart.exlude",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.exlude'"
+  }
+]}

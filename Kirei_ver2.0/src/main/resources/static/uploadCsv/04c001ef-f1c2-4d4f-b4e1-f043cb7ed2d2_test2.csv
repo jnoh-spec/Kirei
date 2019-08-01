@@ -1,0 +1,6 @@
+﻿review_no, product_name, product_price, review, insert_date, user_no,image_no, image
+6,test6,6000,test6,2019/2/13,4,6,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\eyebrow.png
+7,test7,7000,test7,2019/5/25,2,7,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\lipstick3.png
+8,test8,8000,test8,2019/6/22,3,8,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\nailcream.png
+9,test9,9000,test9,2019/6/1,2,9,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\powder2.png
+10,test10,10000,test10,2019/7/5,3,10,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\lip barm.png

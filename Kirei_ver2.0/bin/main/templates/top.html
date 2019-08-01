@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Top'"></title>
+<!-- css -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- local css -->
+<link rel="stylesheet" th:href="@{/resources/css/top.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+	
+	function loginAlert() {
+		alert("ログインをしてください！");
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu" th:if="${session.userInfo != null}">
+					<ul>
+						<li class="name"><span th:text="'ようこそ、' + ${session.nickname} + 'さん'"></span></li>
+						<li><a th:href="@{/kirei/mypage}" th:text="'マイページ'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+				<nav class="menu" th:if="${session.userInfo == null}">
+					<ul>
+						<li><a th:href="@{/kirei/login}" th:text="'ログイン'"></a></li>
+						<li><a th:href="@{/kirei/userInsert}" th:text="'会員加入'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="search">
+			<form class="inline-block" th:action="@{/kirei/keywordSearch}" method="post">
+				<label id="name" th:text="'キーワード'"></label>
+				<input type="text" size="55" name="keyword">
+				<input type="submit" value="検索">
+			</form>
+			<form class="inline-block" th:action="@{/kirei/top}">
+				<input type="submit" value="全件表示">
+			</form>
+		</div>
+		<br> <br>
+	</div> 
+
+	<div class="boxC">
+	<th:block th:if="${reviewList != null && imageList != null}">
+	<th:block th:each="review : ${reviewList}">
+	<th:block th:each="image : ${imageList}">
+	<th:block th:if="${review.review_No == image.review_No}">
+		<div class="imageBox">
+			<th:block th:if="${session.userInfo == null}">
+			<a th:href="@{/kirei/reviewDetail(review_No=${review.review_No})}" onclick="loginAlert()">
+				<img th:src="@{${'/resources/uploadImage/' + image.image}}" width="100px" height="100px">
+			</a>
+			</th:block>
+			<th:block th:if="${session.userInfo != null}">
+			<a th:href="@{/kirei/reviewDetail(review_No=${review.review_No})}">
+				<img th:src="@{${'/resources/uploadImage/' + image.image}}" width="100px" height="100px">
+			</a>
+			</th:block>
+			<div class="cover">
+				<p th:text="${review.product_Name}" id="name"></p>
+				<p th:text="${review.insert_Date}" id="date"></p>
+			</div>
+		</div>
+	</div>
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'User List'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/userList.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/adminMenu}" th:text="'メニュー'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'ユーザー一覧'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="search">
+			<form class="inline-block" th:action="@{/kirei/userSearch}" method="post">
+				<label id="name" th:text="'ID'"></label>
+				<input type="text" size="20" name="userid">
+				<label id="name" th:text="'ニックネーム'"></label>
+				<input type="text" size="20" name="nickname">
+				<input type="submit" value="検索">
+			</form>
+			<form class="inline-block" th:action="@{/kirei/userList}">
+				<input type="submit" value="全件表示">
+			</form>
+		</div>
+		<div class="table">
+			<table id="show_tb">
+				<thead>
+					<tr>
+						<th></th>
+						<th th:text="'ID'"></th>
+						<th th:text="'ニックネーム'"></th>
+						<th th:text="'加入日'"></th>
+					</tr>
+				</thead>
+				<tbody th:if="${userList != null}">
+					<tr th:each="user : ${userList}">
+						<td></td>
+						<td th:text="${user.user_Id}"></td>
+						<td th:text="${user.nickname}"></td>
+						<td th:text="${user.join_Date}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

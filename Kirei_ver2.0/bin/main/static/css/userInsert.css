@@ -1,0 +1,186 @@
+body	{margin: 0;
+	font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif}
+
+.site h1 a {
+	margin-bottom: 7px;
+	color: #FE2E2E;
+	text-decoration: none
+}
+
+.site h1 {
+	margin: 0;
+	font-size: 40px;
+}
+
+.site img {
+	border: none;
+	vertical-align: middle;
+	margin-bottom: 10px;
+	padding-right: 13px;
+	width: 58px;
+	height: auto
+}
+
+.box2 {
+	padding-top: 20px;
+	padding-left: 85%
+}
+
+.menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+.menu li a {
+	display: block;
+	padding: 10px 15px;
+	color: #000000;
+	border-radius: 7px;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu li a:hover {
+	font-weight: bold;
+	color: white;
+	background-color: #FE2E2E
+}
+
+.menu ul:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+.menu li {
+	float: left;
+	width: auto
+}
+
+.title {
+	padding-left: 42%
+}
+
+h2 {
+	color: #FA5858
+}
+
+.userInsert {
+	height: 400px;
+	padding-left: 30%;
+	margin-bottom: 50px;
+	border:2px solid #eeeeee
+}
+
+.userInsert a {
+	padding-left: 20.5%;
+	text-decoration: none;
+	color: #666666;
+	font-size: 18px
+}
+
+#insert_tb {
+	margin-top: 50px;
+	margin-bottom: 35px;
+}
+
+input[type=text] {
+	border: 2px solid #F6CECE;
+	height: 30px;
+	border-radius: 4px;
+}
+
+input[type=password] {
+	border: 2px solid #F6CECE;
+	height: 30px;
+	border-radius: 4px;
+}
+
+input[type=submit] {
+	-webkit-appearance: none;
+	margin-left: 22%;
+	margin-bottom: 10px;
+	background-color: #F78181;
+	width: 100px;
+	border-radius: 12px;
+  	color: white;
+  	font-weight: bold;
+  	font-size: 17px;
+  	border: 2px solid #F78181;
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: #F78181;
+}
+
+td {
+	text-align : center;
+	width: 150px;
+	height: 30px;
+	font-weight: bold;
+	color: #F78181
+}
+
+.copyright p	{
+	margin: 0;
+	color: #666666;
+	font-size: 14px
+}
+
+.boxD	{
+	margin-top: 200px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background-color: #dddddd
+}
+
+.boxA, .boxC, .boxD
+	{padding-left: 15px;
+	padding-right: 15px}
+
+.boxA	{padding-top: 20px;
+	padding-bottom: 10px}
+
+.boxC	{padding-top: 20px;
+	padding-bottom: 20px}
+
+
+
+@media (min-width: 768px) {
+
+.boxA:after	{content: "";
+	display: block;
+	clear: both}
+
+.box1	{float: left;
+	width: auto}
+
+.boxC:after	{content: "";
+	display: block;
+	clear: both}
+
+
+
+@media (min-width: 1190px) {
+
+.boxB, .boxC, .boxA-inner, .boxD-inner
+	{width: 1140px;
+	margin-left: auto;
+	margin-right: auto}
+
+.boxA	{margin-bottom: 20px;
+	border-bottom: solid 1px #dddddd}
+
+.boxB {
+	margin-bottom: 20px;
+	border-bottom: solid 1px #dddddd
+}
+
+.boxC {
+	margin-top: 30px;
+	border-bottom: solid 1px #dddddd
+}
+

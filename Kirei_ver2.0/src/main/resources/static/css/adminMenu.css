@@ -1,0 +1,184 @@
+body	{margin: 0;
+	font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif}
+
+.site h1 a {
+	margin-bottom: 7px;
+	color: #FE2E2E;
+	text-decoration: none
+}
+
+.site h1 {
+	margin: 0;
+	font-size: 40px;
+}
+
+.site img {
+	border: none;
+	vertical-align: middle;
+	margin-bottom: 10px;
+	padding-right: 13px;
+	width: 58px;
+	height: auto
+}
+
+.box2 {
+	margin-top: 20px
+}
+
+.name {
+	padding: 10px 15px;
+	color: #F79F81;
+	font-weight: bold
+}
+
+.menu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+.menu li a {
+	display: block;
+	padding: 10px 15px;
+	color: #000000;
+	border-radius: 7px;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu li a:hover {
+	font-weight: bold;
+	color: white;
+	background-color: #FE2E2E
+}
+
+.menu ul:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+.menu li {
+	float: left;
+	width: auto
+}
+
+.title {
+	padding-left: 44%
+}
+
+.boxB h2 {
+	color: #FA5858
+}
+
+.adminMenu {
+	margin-left:17.5%;
+	margin-top: 25px;
+	margin-bottom: 15px;
+	height: 300px
+}
+
+.adminMenu li {
+	width: 350px;
+	margin-top: 13px;
+	margin-bottom: 10px;
+	list-style: none;
+	background-color: #F6CECE;
+	font-size: 23px;
+	text-align: center
+}
+
+.adminMenu li a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold
+}
+
+.adminMenu li:hover {
+	background-color: white;
+}
+
+.adminMenu li a:hover {
+	color: #FA5858
+}
+
+#name {
+	display: inline-block;
+	font-weight: bold;
+	vertical-align: -3px;
+	top: 30px;
+	font-size: 20px;
+	color: #F78181
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.copyright p	{
+	margin: 0;
+	color: #666666;
+	font-size: 14px
+}
+
+.boxD	{
+	margin-top: 300px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background-color: #dddddd
+}
+
+.boxA, .boxC, .boxD
+	{padding-left: 15px;
+	padding-right: 15px}
+
+.boxA	{padding-top: 20px;
+	padding-bottom: 10px}
+
+.boxC	{padding-top: 20px;
+	padding-bottom: 20px}
+
+
+
+@media (min-width: 768px) {
+
+.boxA:after	{content: "";
+	display: block;
+	clear: both}
+
+.box1	{float: left;
+	width: auto}
+
+.box2 {
+		float: right;
+		width: auto
+	}
+
+.boxC:after	{content: "";
+	display: block;
+	clear: both}
+
+
+
+@media (min-width: 1190px) {
+
+.boxB, .boxC, .boxA-inner, .boxD-inner
+	{width: 1140px;
+	margin-left: auto;
+	margin-right: auto}
+
+.boxA	{margin-bottom: 20px;
+	border-bottom: solid 1px #dddddd}
+
+.boxB {
+	margin-bottom: 20px;
+	border-bottom: solid 1px #dddddd
+}
+
+.boxC {
+	margin-top: 30px;
+	padding-left: 17%;
+	border-bottom: solid 1px #dddddd
+}
+

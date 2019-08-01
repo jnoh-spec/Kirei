@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Review Detail'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/reviewDetail.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		var message = confirm("ログアウトしますか？");
+
+		if (message == true) {
+			alert("ログアウトしました。");
+		} else {
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul th:if="${session.user_Authority == 1}">
+						<li><a th:href="@{/kirei/adminMenu}" th:text="'メニュー'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+					<ul th:if="${session.user_Authority == 2}">
+						<li><a th:href="@{/kirei/top}" th:text="'トップ'"></a></li>
+						<li><a th:href="@{/kirei/mypage}" th:text="'マイページ'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'レビュー詳細'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="detail">
+			<div class="image" th:if="${imageList != null}">
+				<th:block th:each="image : ${imageList}">
+				<img th:src="@{${'/resources/uploadImage/' + image.image}}" width="150px" height="150px">
+			</div>
+			<div class="form" th:if="${review != null && user != null}">
+				<table id="detail_tb">
+					<tr>
+						<td th:text="'商品名'"></td>
+						<td id="detail" th:text="${review.product_Name}"></td>
+					</tr>
+					<tr>
+						<td th:text="'価格'"></td>
+						<td id="detail" th:text="${review.product_Price}"></td>
+					</tr>
+					<tr>
+						<td th:text="'作成者'"></td>
+						<td id="detail" th:text="${user.nickname}"></td>
+					</tr>
+					<tr>
+						<td th:text="'作成日'"></td>
+						<td id="detail" th:text="${review.insert_Date}"></td>
+					</tr>
+					<tr>
+						<td th:text="'レビュー'"></td>
+						<td id="detail" th:text="${review.review}"></td>
+					</tr>
+				</table>
+				<br>
+				<th:block th:if="${session.user_Authority == 1}">
+					<a th:href="@{/kirei/allReviewList}" id="first" th:text="'レビューリストへ戻る(click!)'"></a>
+				</th:block>
+				<th:block th:if="${session.user_Authority == 2}">
+					<a th:href="@{/kirei/top}" id="second" th:text="'トップへ戻る(click!)'"></a>
+				</th:block>
+				<br>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

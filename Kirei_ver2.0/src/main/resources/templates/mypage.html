@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'My Page'"></title>
+<link rel="stylesheet" th:href="@{/resources/css/mypage.css}">
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script>
+	function outconfirm() {
+		 var message = confirm("ログアウトしますか？");
+
+		 if (message == true) {
+			 alert("ログアウトしました。");
+		 } else {
+			 return false;
+		 }
+	}
+</script>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxA-inner">
+			<div class="box1">
+				<div class="site">
+					<h1><img th:src="@{/resources/img/logo.png}"><a th:text="'KIREI'"></a></h1>
+				</div>
+			</div>
+			<div class="box2">
+				<nav class="menu">
+					<ul>
+						<li><a th:href="@{/kirei/top}" th:text="'トップ'"></a></li>
+						<li><a onclick="return outconfirm()" th:href="@{/kirei/logout}" th:text="'ログアウト'"></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="boxB">
+		<div class="title">
+			<h2 th:text="'マイページ'"></h2>
+		</div>
+	</div>
+
+	<div class="boxC">
+		<div class="userInfo" th:if="${session.userInfo != null}">
+			<h2 th:text="'*ユーザー情報*'"></h2>
+			<p th:text="'ユーザーID : ' + ${session.userId}"></p>
+			<p th:text="'ニックネーム : ' + ${session.nickname}"></p>
+		</div>
+		<div class="userMenu">
+			<ul>
+				<li><a th:href="@{/kirei/reviewInsert}" th:text="'レビュー登録'"></a></li>
+				<li><a th:href="@{/kirei/userReviewList}" th:text="'レビュー一覧'"></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="boxD">
+		<div class="boxD-inner">
+			<div class="copyright">
+				<p th:text="'Copyright &copy; Jiah'"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

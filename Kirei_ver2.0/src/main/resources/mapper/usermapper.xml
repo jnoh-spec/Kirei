@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="project.kirei.mapper.UserMapper">
+
+	<insert id="insertUser">
+			insert into user (user_id, user_pwd, nickname, join_date, authority_no)
+			values (#{user_Id}, #{user_Pwd}, #{nickname}, curdate(), 2);
+	</insert>
+
+	<insert id="insertReview">
+			insert into review (product_name, product_price, review, insert_date, user_no)
+			values (#{product_Name}, #{product_Price}, #{review}, curdate(), #{user_No})
+    </insert>
+
+    <select id="selectReviewNo" resultType="int">
+    		select review_no from review order by review_no desc limit 1
+    </select>
+
+    <insert id="insertImage">
+			insert into image (image, review_no)
+			values (#{image}, #{review_No})
+    </insert>
+
+     <select id="userReviewList" resultType="project.kirei.dto.Review" parameterType="int">
+    		select *
+    		from review
+    		where user_no = #{user_No}
+    </select>
+
+	<delete id="deleteImage">
+    		delete
+    		from image
+    		where review_no = #{review_No}
+    </delete>
+
+    <delete id="deleteReview">
+    		delete
+    		from review
+    		where review_no = #{review_No}
+    </delete>
+
+    <update id="updateReview">
+    		update review
+    		set product_name = #{product_Name}, product_price = #{product_Price}, review = #{review}
+    		where review_no = #{review_No}
+    </update>
+
+    <select id="selectImageNo" resultType="int" parameterType="int">
+    		select image_no
+    		from image
+    		where review_no = #{review_No}
+    		order by image_no
+    		limit 1
+    </select>
+
+    <update id="updateImage">
+    		update image
+    		set image = #{image}
+    		where review_no = #{review_No} and image_no = #{image_No}
+    </update>
+
+	<select id="keywordSearch" resultType="project.kirei.dto.Review" parameterType="String">
+			select *
+			from review
+			where product_name like concat('%', #{keyword}, '%') or review like concat('%', #{keyword}, '%')
+	</select>
+
+</mapper>
+
