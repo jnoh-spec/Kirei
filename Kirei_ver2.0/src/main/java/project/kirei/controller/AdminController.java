@@ -44,8 +44,8 @@ import project.kirei.service.UserService;
 @RequestMapping("/kirei")
 public class AdminController {
 
-	private final static String path = "C:\\sts-bundle\\workspace\\Kirei_ver1.0\\src\\main\\resources\\static\\uploadCsv\\";
-	private final static String imgPath = "C:\\sts-bundle\\workspace\\Kirei_ver1.0\\src\\main\\resources\\static\\uploadImage\\";
+	private final static String path = "C:\\Users\\kitay\\git\\kirei\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadCsv\\";
+	private final static String imgPath = "C:\\Users\\kitay\\git\\kirei\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadImage\\";
 
 	private final static String STR_COMMA = ",";
 
@@ -189,21 +189,27 @@ public class AdminController {
 
 				if (img.exists()) {
 
+					logger.info("Image Exist!");
+					
 					UUID uuid = UUID.randomUUID();
 					String saved = uuid.toString() + "_" + img.getName();
 
 					BufferedImage image = null;
 
 					image = ImageIO.read(img);
+					
 					ImageIO.write(image, "png", new File(imgPath + saved));
 					
-					csv.setReview_No(num); 
+					System.out.println("saved :: " + saved);
+				
+					
+					csv.setReview_No(num);  
 					csv.setImage(saved); 
 
 				}
 				 aservice.insertCsvImage(csv);
 
-				//aservice.updateCsvImage(csv);
+				//aservice.updateCsvImage(csv);//
 
 				csvlist.clear();
 			}

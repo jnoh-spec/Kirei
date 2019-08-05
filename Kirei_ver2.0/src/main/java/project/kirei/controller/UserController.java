@@ -31,7 +31,7 @@ public class UserController {
 
 	private final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-	private final static String path = "C:\\sts-bundle\\workspace\\Kirei_ver1.0\\src\\main\\resources\\static\\uploadImage\\";
+	private final static String path = "C:\\sts-bundle\\workspace\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadImage\\";
 	private final static String defaultImage = "no_image.png";
 
 	@Autowired

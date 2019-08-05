@@ -1,0 +1,6 @@
+﻿review_no, product_name, product_price, review, insert_date, user_no, image_no, image
+1,test1,1000,test1,2019/2/13,2,1,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\clay mask.png
+2,test2,2000,test2,2019/5/25,3,2,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\lipstick2.png
+3,test3,3000,test3,2019/6/22,2,3,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\setting spray.png
+4,test4,4000,test4,2019/6/1,4,4,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\mist.png
+5,test5,5000,test5,2019/7/5,3,5,C:\Users\kitay\OneDrive\デスクトップ\201907\Servlet演習\images\mascara3.png
