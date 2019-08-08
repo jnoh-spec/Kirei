@@ -209,7 +209,7 @@ public class AdminController {
 				}
 				 aservice.insertCsvImage(csv);
 
-				//aservice.updateCsvImage(csv);//
+				/*aservice.updateCsvImage(csv);*/
 
 				csvlist.clear();
 			}
