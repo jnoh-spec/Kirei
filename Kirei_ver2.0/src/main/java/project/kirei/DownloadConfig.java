@@ -12,10 +12,9 @@ public class DownloadConfig {
 
 	private static final String CONTENT_DISPOSITION_FORMAT = "attachment; filename=\"%s\"; filename*=UTF-8''%s";
 
-	public void addContentDisposition(HttpHeaders headers, String fileName)
-			throws UnsupportedEncodingException {
-		String headerValue = String.format(CONTENT_DISPOSITION_FORMAT,
-				fileName, UriUtils.encode(fileName, StandardCharsets.UTF_8.name()));
+	public void addContentDisposition(HttpHeaders headers, String fileName) throws UnsupportedEncodingException {
+		String headerValue = String.format(CONTENT_DISPOSITION_FORMAT, fileName,
+				UriUtils.encode(fileName, StandardCharsets.UTF_8.name()));
 		headers.add(HttpHeaders.CONTENT_DISPOSITION, headerValue);
 	}
 

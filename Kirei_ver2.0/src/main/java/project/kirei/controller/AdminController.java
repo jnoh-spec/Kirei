@@ -44,7 +44,7 @@ import project.kirei.service.UserService;
 @RequestMapping("/kirei")
 public class AdminController {
 
-	private final static String path = "C:\\Users\\kitay\\git\\kirei\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadCsv\\";
+	private final static String csvPath = "C:\\Users\\kitay\\git\\kirei\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadCsv\\";
 	private final static String imgPath = "C:\\Users\\kitay\\git\\kirei\\Kirei_ver2.0\\src\\main\\resources\\static\\uploadImage\\";
 
 	private final static String STR_COMMA = ",";
@@ -139,7 +139,7 @@ public class AdminController {
 	private String csvInsert(MultipartFile csvFile, HttpServletRequest request) throws Exception {
 
 		// プロジェクト内にファイルコピー
-		String savedName = uploadFile(csvFile.getOriginalFilename(), csvFile.getBytes(), path);
+		String savedName = uploadFile(csvFile.getOriginalFilename(), csvFile.getBytes(), csvPath);
 
 		logger.info("Saved CSV : " + savedName);
 

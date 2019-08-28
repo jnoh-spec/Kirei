@@ -27,7 +27,7 @@ public class AppHandlerInterceptor extends HandlerInterceptorAdapter  {
 
         } else {
 
-        	System.out.println("Interceptor!");
+        	logger.info("--------------------------------Interceptor!");
         	response.sendRedirect("/kirei");
         	return false;
 
